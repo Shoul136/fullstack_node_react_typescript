@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon --exec tsx src/index.ts",
-    "test": "jest"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles",
+    "test:coverage": "npm run pretest && node --experimental-vm-modules node_modules/jest/bin/jest.js --detectOpenHandles --coverage",
+    "pretest": "tsx ./src/data/index.ts --clear"
   },
   "author": "Luis Roberto Roque Vargas luisrqvgdev@",
   "license": "ISC",

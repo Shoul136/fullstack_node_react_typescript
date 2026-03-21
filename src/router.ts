@@ -22,7 +22,7 @@ router.post('/',
 );
 
 router.put('/:id', 
-    param('id').notEmpty().withMessage('ID no válido'),
+    param('id').isInt().withMessage('ID no válido'),
     body('name').notEmpty().withMessage('El nombre del Producto no puede ir vacio'),
     body('price')
         .isNumeric().withMessage('Valor no válido')
@@ -35,12 +35,12 @@ router.put('/:id',
 );
 
 router.patch('/:id', 
-    param('id').notEmpty().withMessage('ID no válido'),
+    param('id').isInt().withMessage('ID no válido'),
     handleInputErros,
     updateAvailability)
 
 router.delete('/:id', 
-    param('id').notEmpty().withMessage('ID no válido'),
+    param('id').isInt().withMessage('ID no válido'),
     handleInputErros,
     deleteProduct
 )
