@@ -1,11 +1,17 @@
 export default {
   testEnvironment: 'node',
   preset: 'ts-jest',
-  moduleNameMapper: {
-    '^@src/(.*)$': '<rootDir>/src/$1',
+  extensionsToTreatAsEsm: ['.ts'],
+moduleNameMapper: {
+    '^(\\.\\.?\\/.+)\\.js$': '$1',
   },
-  transform: {
-    '\\.[jt]sx?$': 'babel-jest',
+ transform: {
+    '^.+\\.tsx?$': [
+      'ts-jest',
+      {
+        useESM: true,
+      },
+    ]
   },
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
   extensionsToTreatAsEsm: ['.ts'],
