@@ -1,5 +1,6 @@
 import express from 'express';
 import cors, { CorsOptions } from 'cors';
+import morgan from 'morgan'
 import router from './router.js';
 import db from './config/db.js';
 import colors from 'colors'
@@ -39,7 +40,7 @@ server.use(cors(corsOptions))
 
 // Leer datos de formularios
 server.use(express.json())
-
+server.use(morgan('dev'))
 server.use('/api/products', router);
 
 // Docs
