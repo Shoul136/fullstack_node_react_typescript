@@ -24,10 +24,12 @@ connectDB()
 // Instancia de express
 const server = express();
 
+const whitelist = [process.env.FRONTEND_URL, 'http://localhost:3000', 'http://localhost:5173'];
+
 // Permitir conexiones
 const corsOptions : CorsOptions = {
     origin: function(origin, callback){
-        if(origin == process.env.FRONTEND_URL || 'http://localhost:3000')
+        if (!origin || whitelist.includes(origin))
         {
             callback(null, true)
         }else{
